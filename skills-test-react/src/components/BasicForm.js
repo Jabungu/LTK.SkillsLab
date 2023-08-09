@@ -1,25 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Formik, Field, Form } from 'formik';
 import { Button } from '@mui/material';
 
-const BasicForm = () => (
+const BasicForm = ({ onSubmit, todoValue }) => (
   <div>
     <h1>TODO</h1>
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
+        todo: todoValue
       }}
-      onSubmit={(values) => {}}
+      onSubmit={onSubmit}
     >
       <Form>
         <label htmlFor="todo">Add ToDo </label>
         <Field id="todo" name="Add ToDo" placeholder="TextHere" />
-        <button type="submit">Submit</button>
+        <Button type="submit" color="primary" variant="contained">Submit</Button>
       </Form>
     </Formik>
+    { todoValue && <div>Todo: {todoValue}</div>}
   </div>
 );
 
